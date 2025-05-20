@@ -12,7 +12,7 @@ function Navbar() {
         <Stethoscope className="text-xl" />
         <h1 className="text-xl font-bold">NeuroChest</h1>
       </div>
-      <div className="w-full flex items-center justify-start">
+      <div className="w-full flex items-center justify-end mr-10">
         <ul className="flex items-center gap-16 list-none">
           <NavLink
             to="/"
@@ -27,10 +27,10 @@ function Navbar() {
             About
           </NavLink>
           <NavLink
-            to="/contact"
+            to="/documentation"
             className="font-semibold text-white hover:text-gray-300 cursor-pointer"
           >
-            Contact
+            Project Documentation
           </NavLink>
         </ul>
       </div>

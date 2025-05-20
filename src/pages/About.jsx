@@ -1,11 +1,12 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import FAQ from "../components/FAQ";
 function About() {
   return (
     <div className="flex flex-col">
       <Navbar />
-      <section className="py-20 px-6 text-white mt-28">
+      <section className="py-20 px-6 text-white mt-28 mb-10">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h2 className="text-4xl font-bold text-green-300 mb-4">
@@ -34,6 +35,7 @@ function About() {
           </div>
         </div>
       </section>
+      <FAQ />
       <Footer />
     </div>
   );

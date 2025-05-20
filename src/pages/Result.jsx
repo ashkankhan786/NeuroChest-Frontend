@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { useLocation } from "react-router";
+import Footer from "../components/Footer";
 
 function Result() {
   const location = useLocation();
-  const prediction = location.state?.prediction;
+  const { prediction, image } = location.state || {};
+
   useEffect(() => {
     console.log("From result component", prediction);
   }, [prediction]);
+
   const LABELS = [
     "No Finding",
     "Enlarged Cardiomediastinum",
@@ -24,33 +27,39 @@ function Result() {
     "Fracture",
     "Support Devices",
   ];
+
   return (
     <div className="w-full h-full flex flex-col gap-4">
       <Navbar />
-      <div>
-        <h1 className="text-4xl font-bold text-center text-green-300 mt-28">
-          Result
-        </h1>
-        <div className="flex justify-center mt-10">
+      <h1 className="text-4xl font-bold text-center text-green-300 mt-28">
+        Result
+      </h1>
+
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 mt-10 px-4 mb-16">
+        {/* Image */}
+        <div className="w-full max-w-sm">
           <img
-            src="/images/result.png"
-            alt="Result"
-            className="w-full max-w-sm rounded-xl shadow-lg"
+            src={image}
+            alt="Uploaded X-ray"
+            className="w-full rounded-xl shadow-lg"
           />
         </div>
-        <div className="text-center mt-6">
-          <p className="text-gray-200 text-lg leading-relaxed">
+
+        {/* Predictions */}
+        <div className="text-center w-full max-w-lg">
+          <p className="text-gray-200 text-lg leading-relaxed mb-4">
             Your X-ray has been analyzed. The results are as follows:
           </p>
-          <ul className="mt-6 space-y-3 text-green-100 list-disc list-inside">
+          <ul className="space-y-3 text-green-100">
             {Object.entries(prediction).map(([disease, prob]) => (
-              <p key={disease} className="text-white">
+              <li key={disease} className="text-white">
                 {disease}: {(prob * 100).toFixed(2)}%
-              </p>
+              </li>
             ))}
           </ul>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

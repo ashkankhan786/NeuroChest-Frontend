@@ -157,7 +157,11 @@ function Hero() {
           <p>
             For detailed results :{" "}
             <span
-              onClick={() => navigate("/result", { state: { prediction } })}
+              onClick={() =>
+                navigate("/result", {
+                  state: { prediction, image: previewUrl },
+                })
+              }
               className="cursor-pointer hover:text-green-200"
             >
               Click here
